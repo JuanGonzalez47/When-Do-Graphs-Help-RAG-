@@ -13,39 +13,52 @@ This project is an experimental extension, not a complete reproduction of every 
 
 ## Status and main findings
 
-The observations below describe the runs and saved reports in this workspace. They are exploratory; they should not be presented as confirmatory findings.
+The results below are transcribed from [`research/results/results.csv`](research/results/results.csv). They are exploratory, report-level summaries; Q1/Q2 do not include paired inference, and Q3/Q4 use paired analyses only where noted. Scores are on a 0-1 scale. For Q1/Q2, means pool the Novel and Medical corpus summaries weighted by their reported `n`. `†` marks a metric for which at least one corpus report is marked incomplete or unverified; interpret those means cautiously.
 
 | Question | Work completed | Descriptive result |
 |---|---|---|
-| Q1 | Four conditions, 1,024- and 4,096-token budgets, 400 questions | `graph_full` did not outperform flat RAG on aggregate answer correctness. At 4,096 tokens, `graph_full` and `graph_rewired` were very similar. |
-| Q2 | Four conditions, two budgets, reusing Q1 RAG and `graph_full` runs | `graph_greedy` had lower aggregate correctness and evidence recall than RAG. `graph_adaptive` was slightly higher on correctness at 4,096 tokens, but not at 1,024; no paired significance analysis was available. |
-| Q3 | Six conditions at 4,096 tokens; paired analysis on 397 questions | Intact relations did not improve answer correctness over the controls. Evidence recall was higher than nodes-only and hidden-predicate contexts, but not clearly higher than permuted predicates, rewired topology, or RAG. |
-| Q4 | Reduced, balanced 80-question exploratory screen | No confirmation-set test was run. The available screen does not establish a sufficient subgraph or validate the preregistered quality thresholds. |
+| Q1 | Four retrieval conditions, two token budgets, 400 questions per corpus | RAG scored higher on answer correctness at both budgets. At 4,096 tokens, `graph_full`/`graph_rewired` had slightly higher evidence recall than RAG, but the aggregate difference is not paired or tested. |
+| Q2 | Greedy/adaptive selection plus shared RAG and `graph_full` baselines | `graph_greedy` trailed RAG on correctness and evidence recall at both budgets. `graph_adaptive` at 4,096 tokens had the highest correctness mean, but its evidence recall was essentially tied with RAG. |
+| Q3 | Six relation/topology conditions at 4,096 tokens; paired comparisons | Intact relations did not improve correctness over any matched graph condition. Evidence recall was higher than nodes-only and hidden predicates, but not distinguishable from permuted predicates or rewired topology in the unadjusted intervals. |
+| Q4 | 11-condition preliminary screen on 80 questions, with paired bootstrap contrasts | No depth met the planned non-inferiority margins against **both** references on both evaluated metrics. The screen is exploratory, not a confirmation result. |
 
-### Q1/Q2 aggregate scores
+### Q1 - Graph structure
 
-The following are report-level means, weighted by the number of valid question-type scores and pooled across Novel and Medical. These are **not paired estimates** and have no confidence intervals. Some correctness judgments failed; the valid `n` is shown.
+The six reported metrics are answer correctness, context relevance, evidence recall, coverage, faithfulness, and ROUGE-L. Q1 has report-level means for all six metrics; the results below combine Novel and Medical using each report's `n`. Coverage is reported over Contextual Summarize and Creative Generation, faithfulness over Creative Generation, and ROUGE-L over Fact Retrieval and Complex Reasoning, so their sample sizes are smaller than the all-type metrics.
 
-| Condition | Budget | Answer correctness | Valid n | Evidence recall | Valid n |
-|---|---:|---:|---:|---:|---:|
-| `rag` | 1,024 | 0.4889 | 399 | 0.4544 | 400 |
-| `graph_content` | 1,024 | 0.4371 | 400 | 0.4165 | 400 |
-| `graph_full` | 1,024 | 0.4380 | 400 | 0.4146 | 400 |
-| `graph_rewired` | 1,024 | 0.4497 | 400 | 0.4263 | 400 |
-| `graph_greedy` | 1,024 | 0.3784 | 400 | 0.2895 | 400 |
-| `graph_adaptive` | 1,024 | 0.4451 | 400 | 0.4109 | 400 |
-| `rag` | 4,096 | 0.5038 | 400 | 0.4595 | 400 |
-| `graph_content` | 4,096 | 0.4287 | 398 | 0.4189 | 400 |
-| `graph_full` | 4,096 | 0.4870 | 399 | 0.4759 | 400 |
-| `graph_rewired` | 4,096 | 0.4872 | 400 | 0.4770 | 400 |
-| `graph_greedy` | 4,096 | 0.4673 | 399 | 0.3668 | 400 |
-| `graph_adaptive` | 4,096 | 0.5079 | 400 | 0.4600 | 400 |
+| Condition | Budget | Answer correctness | Context relevance | Evidence recall | Coverage | Faithfulness | ROUGE-L |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `rag` | 1,024 | 0.489† | 0.148 | 0.454 | 0.630† | 0.620† | 0.251† |
+| `graph_content` | 1,024 | 0.437† | 0.031 | 0.416 | 0.591† | 0.596† | 0.214† |
+| `graph_full` | 1,024 | 0.438 | 0.044 | 0.415 | 0.571 | 0.563 | 0.219 |
+| `graph_rewired` | 1,024 | 0.450 | 0.026 | 0.426 | 0.578 | 0.558 | 0.215 |
+| `rag` | 4,096 | 0.504 | 0.090 | 0.460 | 0.630 | 0.678 | 0.241 |
+| `graph_content` | 4,096 | 0.429† | 0.018 | 0.419 | 0.564† | 0.576† | 0.219† |
+| `graph_full` | 4,096 | 0.487† | 0.006 | 0.476 | 0.576† | 0.493† | 0.156† |
+| `graph_rewired` | 4,096 | 0.487 | 0.004 | 0.477 | 0.592 | 0.520 | 0.155 |
 
-There are 24 unique Q1/Q2 corpus-condition-budget cells (six methods, two budgets, two corpora), or 4,800 generations at 200 questions per corpus. Q2 reuses the Q1 `rag` and `graph_full` generations.
+The flat baseline led on answer correctness, context relevance, and ROUGE-L in the available aggregates. At 4,096 tokens, `graph_full` and `graph_rewired` had evidence-recall means about 0.016-0.017 above RAG, while correctness was about 0.017 below it. These are descriptive, unpaired differences. Some 4,096-token correctness, coverage, faithfulness, and ROUGE-L reports are marked incomplete or unverified, as flagged above. Q1 rewiring also does not preserve edge attributes in the implemented path; it is not a clean topology-only intervention.
 
-### Q3 results
+### Q2 - Context selection
 
-Q3 uses the paired intersection of 397 questions. Three IDs could not be rewired because their selected subgraphs were too small. The RAG reference has 400 questions; the paired analysis excludes the same three IDs from every condition.
+Q2 reuses the Q1 RAG and `graph_full` runs and adds greedy and adaptive selection. Metric applicability and aggregation are the same as in Q1.
+
+| Condition | Budget | Answer correctness | Context relevance | Evidence recall | Coverage | Faithfulness | ROUGE-L |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `rag` | 1,024 | 0.489† | 0.148 | 0.454 | 0.630† | 0.620† | 0.251† |
+| `graph_full` | 1,024 | 0.438 | 0.044 | 0.415 | 0.571 | 0.563 | 0.219 |
+| `graph_greedy` | 1,024 | 0.378 | 0.007 | 0.289 | 0.498 | 0.486 | 0.210 |
+| `graph_adaptive` | 1,024 | 0.445 | 0.027 | 0.411 | 0.568 | 0.560 | 0.221 |
+| `rag` | 4,096 | 0.504 | 0.090 | 0.460 | 0.630 | 0.678 | 0.241 |
+| `graph_full` | 4,096 | 0.487† | 0.006 | 0.476 | 0.576† | 0.493† | 0.156† |
+| `graph_greedy` | 4,096 | 0.467† | 0.003 | 0.367 | 0.575† | 0.560† | 0.153† |
+| `graph_adaptive` | 4,096 | 0.508 | 0.003 | 0.460 | 0.580 | 0.572 | 0.161 |
+
+`graph_greedy` is consistently below RAG on answer correctness and evidence recall. `graph_adaptive` at 4,096 tokens has a slightly higher correctness mean than RAG (0.508 vs. 0.504), but equal evidence recall (0.460) and lower context relevance; this does not establish an improvement. Q2 aggregate means have no paired confidence intervals.
+
+### Q3 - Relation ablations
+
+Q3 reports only answer correctness and evidence recall; the CSV has no Q3 values for context relevance, coverage, faithfulness, or ROUGE-L. Means below use the 397-question paired set except where a correctness judgment failed (`n` is 396 for `graph_intact` and 396 for `graph_nodes_only`).
 
 | Condition | Answer correctness | Evidence recall |
 |---|---:|---:|
@@ -56,11 +69,21 @@ Q3 uses the paired intersection of 397 questions. Three IDs could not be rewired
 | Rewired topology | 0.491 | 0.469 |
 | RAG reference | 0.514 | 0.466 |
 
-The paired bootstrap intervals for answer correctness did not show an intact-condition advantage over the controls. For evidence recall, intact minus nodes-only was +0.052 (95% interval +0.020 to +0.086), and intact minus hidden predicates was +0.056 (+0.024 to +0.087). These intervals are unadjusted; the planned Holm correction was not applied. Two Q3 generation reports contain one failed correctness judgment each. Treat the evidence-recall contrasts as exploratory.
+Paired differences (`graph_intact` minus comparison; 95% bootstrap interval) are shown below. The matched graph contrasts improve evidence recall over nodes-only and hidden predicates, but none shows a correctness advantage. The RAG comparison changes the retrieved content and is not a matched causal contrast.
 
-### Q4 preliminary screen
+| Comparison | Correctness difference (95% CI) | Evidence-recall difference (95% CI) |
+|---|---:|---:|
+| Hidden predicates | +0.005 [-0.021, +0.031] | +0.056 [+0.024, +0.087] |
+| Nodes only | -0.023 [-0.051, +0.005] | +0.052 [+0.020, +0.086] |
+| Permuted predicates | -0.014 [-0.040, +0.011] | -0.005 [-0.031, +0.020] |
+| Rewired topology | +0.010 [-0.016, +0.037] | +0.013 [-0.014, +0.041] |
+| RAG reference | -0.013 [-0.042, +0.017] | +0.016 [-0.021, +0.051] |
 
-This screen used 10 questions from each of the eight corpus-by-question-type development strata (80 questions total). It compared `graph_full` depths 1-3, `graph_greedy` depths 1, 3, and 6, and `graph_adaptive` depths 1, 3, and 6, with Q1 RAG and `graph_full` references. It is not the untouched 80-question confirmation set.
+The intervals are unadjusted; the planned Holm correction was not applied. Treat the apparent evidence-recall advantages over nodes-only and hidden predicates as exploratory.
+
+### Q4 - Context-depth screen
+
+Q4 reports answer correctness, evidence recall, and mean context tokens; it does not report context relevance, coverage, faithfulness, or ROUGE-L. This preliminary screen used 10 questions from each of the eight corpus-by-question-type development strata (80 total), not the untouched confirmation split.
 
 | Method | Depth | Mean context tokens | Answer correctness | Evidence recall |
 |---|---:|---:|---:|---:|
@@ -76,7 +99,7 @@ This screen used 10 questions from each of the eight corpus-by-question-type dev
 | `graph_adaptive` | 3 | 3,557 | 0.496 | 0.434 |
 | `graph_adaptive` | 6 | 3,782 | 0.469 | 0.454 |
 
-The greedy selector's evidence recall was low in this screen. Some `graph_full` and `graph_adaptive` settings were closer to the `graph_full` reference, but this small development subset does not demonstrate non-inferiority to both references. The full 18-cell Q4 development generation exists; the full development evaluation and confirmation were not completed.
+The greedy selector has substantially lower evidence recall at every screened depth. `graph_full` depth 3 and `graph_adaptive` depth 6 clear the planned non-inferiority margins against the `graph_full` reference on both measured metrics; neither clears the margins against RAG, so no setting satisfies the rule against **both** references. These paired bootstrap estimates are exploratory and do not replace the planned confirmation. The full 18-cell Q4 development generation exists; the full development evaluation and confirmation were not completed.
 
 ## Dataset and frozen sample
 
@@ -199,7 +222,7 @@ These are operator-reported estimates, not benchmarked runtimes from a clean rep
 ### 1. Obtain the project and benchmark
 
 ```bash
-git clone https://github.com/<JuanGonzalez47/When-Do-Graphs-Help-RAG-.git
+git clone https://github.com/<OWNER>/<PROJECT-REPOSITORY>.git
 cd <PROJECT-REPOSITORY>
 git clone https://github.com/GraphRAG-Bench/GraphRAG-Benchmark.git official/GraphRAG-Benchmark
 ```
