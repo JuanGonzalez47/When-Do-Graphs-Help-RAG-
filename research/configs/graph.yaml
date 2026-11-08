@@ -1,0 +1,23 @@
+tokenizer: cl100k_base
+chunk_tokens: 256
+chunk_overlap: 32
+
+extractor:
+  provider: openai
+  model: gpt-4o-mini
+  temperature: 0.0
+  max_output_tokens: 1024
+  max_concurrency: 5
+  max_retries: 3
+
+entity_resolution:
+  lowercase: true
+  strip_punctuation: true
+  remove_articles: true
+  embedding_model: BAAI/bge-small-en-v1.5
+  similarity_threshold: 0.92
+
+paths:
+  novel_graphs: research/graphs/novel
+  medical_graphs: research/graphs/medical
+  extraction_cache: research/cache/extraction

@@ -1,0 +1,55 @@
+seed: 42
+tokenizer: cl100k_base
+budgets:
+  - 1024
+  - 4096
+optional_budgets:
+  - 8192
+
+generation:
+  provider: openai
+  model: gpt-4o-mini
+  temperature: 0.0
+  max_output_tokens: 512
+  max_concurrency: 5
+  max_retries: 3
+
+q1_conditions:
+  - rag
+  - graph_content
+  - graph_full
+  - graph_rewired
+
+q2_conditions:
+  - rag
+  - graph_full
+  - graph_greedy
+  - graph_adaptive
+
+optional_conditions:
+  - graph_random_edges
+  - graph_random_prune
+  - graph_centrality_prune
+  - graph_learned
+  - oracle
+
+metrics:
+  generation:
+    - rouge_score
+    - answer_correctness
+    - coverage_score
+    - faithfulness
+  retrieval:
+    - context_relevancy
+    - evidence_recall
+  graph:
+    - node_count
+    - edge_count
+    - average_degree
+    - average_clustering
+
+paths:
+  outputs: research/results/evaluation_raw/q1_q2
+  results: research/results
+  cache: research/cache/llm
+  manifest: research/results/manifest.csv
