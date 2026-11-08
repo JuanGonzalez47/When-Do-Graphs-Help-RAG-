@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/novel/rag_4096.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "rouge_score": 0.24156516433865224,
+        "answer_correctness": 0.3787307183789027
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "rouge_score": 0.20653031140289158,
+        "answer_correctness": 0.46509131780985696
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "answer_correctness": 0.4912859789804848,
+        "coverage_score": 0.7342113997113997
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "answer_correctness": 0.49623519456911785,
+        "coverage_score": 0.46710028860028857,
+        "faithfulness": 0.5808200780700781
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "faithfulness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}

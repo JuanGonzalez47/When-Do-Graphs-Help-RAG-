@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/medical/graph_adaptive_1024_eval.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "context_relevancy": 0.11,
+        "evidence_recall": 0.484
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "context_relevancy": 0.04,
+        "evidence_recall": 0.4721904761904762
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "context_relevancy": 0.035,
+        "evidence_recall": 0.5320571095571096
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "context_relevancy": 0.03,
+        "evidence_recall": 0.558595567830862
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/medical/graph_adaptive_1024.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "rouge_score": 0.2860418228150568,
+        "answer_correctness": 0.39712144781354736
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "rouge_score": 0.1993024741763971,
+        "answer_correctness": 0.44488395926640373
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "answer_correctness": 0.4979680501974575,
+        "coverage_score": 0.6040518925518926
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "answer_correctness": 0.6007178643387818,
+        "coverage_score": 0.5707645275261375,
+        "faithfulness": 0.7204950389479802
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "faithfulness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}

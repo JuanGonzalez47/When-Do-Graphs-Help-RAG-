@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/novel/graph_full_1024_eval.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "context_relevancy": 0.0,
+        "evidence_recall": 0.1822222222222222
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "context_relevancy": 0.015,
+        "evidence_recall": 0.3465
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "context_relevancy": 0.0,
+        "evidence_recall": 0.4360238095238095
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "context_relevancy": 0.03,
+        "evidence_recall": 0.2261269841269841
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}
