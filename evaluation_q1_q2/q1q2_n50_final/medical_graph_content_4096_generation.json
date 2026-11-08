@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/medical/graph_content_4096.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": false
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "rouge_score": 0.2648528719536634,
+        "answer_correctness": 0.38477159797168503
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "rouge_score": 0.18817617555348853,
+        "answer_correctness": 0.4606487851742827
+      },
+      "metric_counts": {
+        "rouge_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "answer_correctness": 0.4502606399153357,
+        "coverage_score": 0.5683327228327228
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 50,
+          "failed": 0
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "answer_correctness": 0.5833540974751177,
+        "coverage_score": 0.6155638805638806,
+        "faithfulness": 0.7081600641556198
+      },
+      "metric_counts": {
+        "answer_correctness": {
+          "valid": 49,
+          "failed": 1
+        },
+        "coverage_score": {
+          "valid": 50,
+          "failed": 0
+        },
+        "faithfulness": {
+          "valid": 49,
+          "failed": 1
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": [
+        {
+          "id": "Medical-6adf6382",
+          "errors": {
+            "answer_correctness": "RuntimeError: Answer-correctness statement extraction failed after 3 attempts: Statement judge returned malformed statements",
+            "faithfulness": "RuntimeError: Faithfulness statement-generation judge failed after 3 attempts: Faithfulness statement judge returned malformed output"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+GENERATION_FAIL novel_rag_1024
+GENERATION_FAIL novel_graph_content_4096
+GENERATION_FAIL novel_graph_full_4096
+GENERATION_FAIL novel_graph_greedy_4096
+GENERATION_FAIL medical_graph_content_1024
+GENERATION_FAIL medical_graph_content_4096
+GENERATION_FAIL medical_graph_full_4096

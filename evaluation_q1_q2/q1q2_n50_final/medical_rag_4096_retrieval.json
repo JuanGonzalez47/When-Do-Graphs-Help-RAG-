@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/medical/rag_4096_eval.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "context_relevancy": 0.205,
+        "evidence_recall": 0.4353333333333333
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "context_relevancy": 0.13,
+        "evidence_recall": 0.49957142857142856
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "context_relevancy": 0.09,
+        "evidence_recall": 0.5159666999666999
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "context_relevancy": 0.04,
+        "evidence_recall": 0.5728268218709395
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}

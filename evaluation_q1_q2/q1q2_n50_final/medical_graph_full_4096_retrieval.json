@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "mode": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "nomic-embed-text",
+    "input_file": "/home/doncho/Projects/Project-GRL/research/outputs/predictions/medical/graph_full_4096_eval.json",
+    "num_samples_per_question_type": 50,
+    "sample_seed": 42,
+    "complete": true
+  },
+  "question_types": {
+    "Fact Retrieval": {
+      "average_scores": {
+        "context_relevancy": 0.02,
+        "evidence_recall": 0.5653333333333334
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Complex Reasoning": {
+      "average_scores": {
+        "context_relevancy": 0.0,
+        "evidence_recall": 0.49109523809523803
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Contextual Summarize": {
+      "average_scores": {
+        "context_relevancy": 0.01,
+        "evidence_recall": 0.7086895326895327
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    },
+    "Creative Generation": {
+      "average_scores": {
+        "context_relevancy": 0.01,
+        "evidence_recall": 0.8285536979360509
+      },
+      "metric_counts": {
+        "context_relevancy": {
+          "valid": 50,
+          "failed": 0
+        },
+        "evidence_recall": {
+          "valid": 50,
+          "failed": 0
+        }
+      },
+      "total_samples": 50,
+      "failed_samples": []
+    }
+  }
+}
