@@ -1,0 +1,9 @@
+# Research harness and dataset audit; tested with Python 3.12.
+networkx==3.7
+numpy==2.5.4
+openai==3.40.0
+pandas==3.1.0
+PyYAML==6.0.3
+scikit-learn==1.9.1
+tiktoken==0.14.0
+torch==2.8.2
