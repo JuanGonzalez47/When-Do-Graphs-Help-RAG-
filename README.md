@@ -222,7 +222,7 @@ These are operator-reported estimates, not benchmarked runtimes from a clean rep
 ### 1. Obtain the project and benchmark
 
 ```bash
-git clone https://github.com/<OWNER>/<PROJECT-REPOSITORY>.git
+git clone https://github.com/JuanGonzalez47/When-Do-Graphs-Help-RAG-.git
 cd <PROJECT-REPOSITORY>
 git clone https://github.com/GraphRAG-Bench/GraphRAG-Benchmark.git official/GraphRAG-Benchmark
 ```
